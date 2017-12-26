@@ -17,3 +17,7 @@ class DetailsView(generics.RetrieveUpdateDestroyAPIView):
     queryset = TeamMember.objects.all()
     serializer_class = TeamMemberSerializer
 
+    # for partial updates
+    def put(self, request, *args, **kwargs):
+        return self.partial_update(request, *args, **kwargs)
+
