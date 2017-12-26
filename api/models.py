@@ -1,13 +1,6 @@
 from django.db import models
 from django.core.validators import RegexValidator
 
-REGULAR = '0'
-ADMIN = '1'
-ACCOUNT_TYPE_CHOICES = (
-    (REGULAR, 'regular'),
-    (ADMIN, 'admin'),
-)
-
 CHAR_LIMIT = 255
 phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', 
     message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
@@ -21,11 +14,7 @@ class TeamMember(models.Model):
     email = models.EmailField(max_length=CHAR_LIMIT, blank=False, unique=True,
         error_messages={'required': 'Please provide your email address.',
                         'unique': 'An account with this email exist.'},)
-    role = models.CharField(
-        max_length=1,
-        choices=ACCOUNT_TYPE_CHOICES,
-        default=REGULAR,
-    )
+    role = models.CharField(max_length=1, blank=False)
     
     def __str__(self):
         return self.email
