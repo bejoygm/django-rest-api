@@ -39,3 +39,9 @@ class ViewTestCase(TestCase):
     def test_api_can_create_a_teammember(self):
         self.assertNotEqual(self.response.status_code, status.HTTP_201_CREATED)
 
+    def test_api_can_create_a_teammember(self):
+        teammembers = TeamMember.objects.get()
+        response = self.client.get(
+            reverse('details')
+        )
+

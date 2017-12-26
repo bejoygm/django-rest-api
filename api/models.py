@@ -2,6 +2,7 @@ from django.db import models
 from django.core.validators import RegexValidator
 
 class TeamMember(models.Model):
+    user_id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=255, blank=False)
     last_name = models.CharField(max_length=255, blank=True)
     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', 
