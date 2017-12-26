@@ -13,6 +13,7 @@ class CreateView(generics.ListCreateAPIView):
 
 class DetailsView(generics.RetrieveUpdateDestroyAPIView):
     """This class handles the http GET, PUT and DELETE requests."""
+    lookup_field = 'user_id'
     queryset = TeamMember.objects.all()
     serializer_class = TeamMemberSerializer
 

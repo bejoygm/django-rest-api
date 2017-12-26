@@ -44,7 +44,7 @@ class ViewTestCase(TestCase):
         teammember = TeamMember.objects.get()
         response = self.client.get(
             reverse('details',
-                kwargs={'pk': teammember.user_id}), format="json"
+                kwargs={'user_id': teammember.user_id}), format="json"
         )
         serializer = TeamMemberSerializer(teammember)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -54,7 +54,7 @@ class ViewTestCase(TestCase):
         teammember = TeamMember.objects.get()
         update_teammember = {'first_name': 'Transformer'}
         response = self.client.put(
-            reverse('details', kwargs={'pk': teammember.user_id}),
+            reverse('details', kwargs={'user_id': teammember.user_id}),
             update_teammember, format='json'
         )
         self.assertEqual(response.data['first_name'], update_teammember['first_name'])
@@ -64,7 +64,7 @@ class ViewTestCase(TestCase):
         """Test the api can delete a teammember."""
         teammember = TeamMember.objects.get()
         response = self.client.delete(
-            reverse('details', kwargs={'pk': teammember.user_id}),
+            reverse('details', kwargs={'user_id': teammember.user_id}),
             format='json',
             follow=True)
 
