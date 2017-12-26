@@ -30,6 +30,7 @@ class ViewTestCase(TestCase):
             'last_name': 'Omega',
             'phone_number': '+999999999',
             'email': 'a@a.com',
+            'role': '0'
         }
         self.response = self.client.post(
             reverse('create'),

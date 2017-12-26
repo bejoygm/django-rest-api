@@ -8,4 +8,4 @@ class TeamMemberSerializer(serializers.ModelSerializer):
         """Meta class to map serializer's fields with the model fields."""
         model = TeamMember
         extra_kwargs = {"email": {"error_messages": {"required": "Give yourself a username"}}}
-        fields = ('user_id', 'first_name', 'last_name', 'phone_number', 'email')
+        fields = ('user_id', 'first_name', 'last_name', 'phone_number', 'email', 'role')
